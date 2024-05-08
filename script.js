@@ -434,7 +434,7 @@ const Skills = (data, id) => {
 	return element
 }
 
-async function makeData() {
+function makeData() {
 	return {
 		id: 1,
 		address: {
