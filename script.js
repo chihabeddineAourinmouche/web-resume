@@ -609,6 +609,7 @@ function makeData() {
 }
 
 function displayResponse(data) {
+	alert('This version is only for showcasing, data and design might not be accurate yet. The official version will be published shortly and ""will not have this alert"".')
 	const resumeContainer = document.getElementById('resume-container')
 	const header = Header(data)
 	const skills = Skills(data, 'resume-skills')
