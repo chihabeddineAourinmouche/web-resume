@@ -12,26 +12,30 @@ const create = (type, parent = null, classNames = [], id = '', style = {}, event
 }
 
 const Header = (data) => {
-	const element = create('d', parent = null, [], id = 'resume-header', style = {
+	const MIN_WIDTH = 461
+	const element = create('d', null, [], 'resume-header', {
 		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
-		borderRadius: '100px 15px 15px 100px',
+		width: '100%',
+		maxWidth: '700px',
+		borderRadius: window.innerWidth <= MIN_WIDTH ? '15px' : '100px 15px 15px 100px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
 		padding: '20px',
 		display: 'flex',
+		flexDirection: window.innerWidth <= MIN_WIDTH ? 'column' : 'row',
 		justifyContent: 'space-between',
-		gap: '50px',
+		alignItems: 'center',
+		gap: '10px',
 		fontFamily: 'Century Gothic',
 	})
 
-	create('img', parent = element, [], id = 'profile-picture', style = {
+	create('img', element, [], 'profile-picture', {
 		height: '150px',
+		width: '150px',
 		borderRadius: '50%',
 		border: '10px solid #b35949',
-	}, events = [], attrs = { src: data.image })
+	}, [], { src: data.image })
 
-	const textContainer = create('div', parent = element, [], id = 'fullname-title-container', style = {
+	const textContainer = create('div', element, [], 'fullname-title-container', {
 		paddingTop: '20px',
 		display: 'flex',
 		flexDirection: 'column',
@@ -40,17 +44,22 @@ const Header = (data) => {
 		textAlign: 'left',
 	})
 
-	create('h2', parent = textContainer, [], id = 'fullname', style = {
+	create('h2', textContainer, [], 'fullname', {
 		fontSize: '1.7rem',
 		color: '#b35949',
-	}, events = [], attrs = {
+	}, [], {
 		textContent: `${data.firstName} ${data.lastName}`,
 	})
 
-	create('h3', parent = textContainer, [], id = 'fullname', style = {
+	create('h3', textContainer, [], 'fullname', {
 		fontWeight: '500',
-	}, events = [], attrs = {
+	}, [], {
 		textContent: data.title,
+	})
+
+	window.addEventListener('resize', () => {
+		element.style.borderRadius = window.innerWidth <= MIN_WIDTH ? '15px' : '100px 15px 15px 100px'
+		element.style.flexDirection = window.innerWidth <= MIN_WIDTH ? 'column' : 'row'
 	})
 
 	return element;
@@ -59,12 +68,11 @@ const Header = (data) => {
 const SectionTitle = (title, parent = null, target = '') => {
 	const getRandomInt = (max) => Math.floor(Math.random() * max)
 	const getRandomZeroOneTwo = () => getRandomInt(3)
-
 	const randomPosition = getRandomZeroOneTwo()
 
 	const element = create('a', parent, [], `section-title-${target}`, {
-		width: '700px',
-		minWidth: '500px',
+		maxWidth: '700px',
+		width: '100%',
 		marginTop: '20px',
 		fontFamily: 'Century Gothic',
 		color: '#b35949',
@@ -96,6 +104,28 @@ const SectionTitle = (title, parent = null, target = '') => {
 	return element
 }
 
+const About = (data, id) => {
+	const MIN_WIDTH = 350
+	const element = create('p', null, [], id, {
+		backgroundColor: '#fff',
+		maxWidth: '700px',
+		width: '100%',
+		borderRadius: '15px',
+		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
+		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 100px',
+		fontFamily: 'Century Gothic',
+		textAlign: 'center',
+	}, [], {
+		textContent: data.about,
+	})
+
+	window.addEventListener('resize', () => {
+		element.style.padding = window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 10%'
+	})
+
+	return element
+}
+
 const Contact = (data) => {
 	const element = create('div', parent = null, [], id = 'resume-contact', style = {
 		backgroundColor: '#fff',
@@ -118,7 +148,7 @@ const Contact = (data) => {
 	create('i', address, 'fa fa-map-marker'.split(' '), '', {
 		display: 'flex',
 		alignItems: 'center',
-	}, [], {})
+	})
 
 	create('a', address, [], '', {
 		color: 'inherit',
@@ -139,7 +169,7 @@ const Contact = (data) => {
 	create('i', email, 'fa fa-envelope-square'.split(' '), '', {
 		display: 'flex',
 		alignItems: 'center',
-	}, [], {})
+	})
 
 	create('a', email, [], '', {
 		color: 'inherit',
@@ -154,13 +184,13 @@ const Contact = (data) => {
 }
 
 const Language = (data) => {
-	const element = create('div', parent = null, [], id = data.name, style = {
+	const element = create('div', null, [], data.name, {
 		display: 'flex',
 		justifyContent: 'flex-end',
 		gap: '5px',
 	})
 
-	create('span', parent = element, [], id = `language-${data.name}-proficiency`, style = {
+	create('span', element, [], `language-${data.name}-proficiency`, {
 		color: {
 			'beginner': '#cc9670', 'intermediate': '#b5cc70',
 			'proficient': '#70adcc', 'bilingual': '#78cc70',
@@ -170,13 +200,13 @@ const Language = (data) => {
 		textAlign: 'right',
 		display: 'flex',
 		alignItems: 'center',
-	}, evenets = [], attrs = {
+	}, [], {
 		textContent: data.level,
 	})
 
-	create('span', parent = element, [], id = `language-${data.name}-name`, style = {
+	create('span', element, [], `language-${data.name}-name`, {
 		textAlign: 'left',
-	}, evenets = [], attrs = {
+	}, [], {
 		textContent: data.name,
 	})
 
@@ -184,7 +214,7 @@ const Language = (data) => {
 }
 
 const Languages = (data) => {
-	const element = create('ul', parent = null, [], id = 'resume-languages', style = {
+	const element = create('ul', null, [], 'resume-languages', {
 		backgroundColor: '#fff',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
@@ -202,39 +232,30 @@ const Languages = (data) => {
 }
 
 const ContactLanguages = (data, id) => {
-	const element = create('div', parent = null, [], id, style = {
-		width: '700px',
-		minWidth: '500px',
+	const MIN_WIDTH = 490
+	const element = create('div', null, [], id, {
+		maxWidth: '700px',
+		width: '100%',
 		display: 'flex',
-		alignItems: 'flex-start',
+		flexDirection: window.innerWidth <= MIN_WIDTH ? 'column' : 'row',
+		alignItems: window.innerWidth <= MIN_WIDTH ? 'flex-end' : 'flex-start',
 		justifyContent: 'space-between',
 		gap: '20px',
 		fontFamily: 'Century Gothic',
 	})
-
 	element.appendChild(Contact(data))
 	element.appendChild(Languages(data))
+
+	window.addEventListener('resize', () => {
+		element.style.flexDirection = window.innerWidth <= MIN_WIDTH ? 'column' : 'row'
+		element.style.alignItems = window.innerWidth <= MIN_WIDTH ? 'flex-end' : 'flex-start'
+	})
 
 	return element
 }
 
-const About = (data, id) => {
-	return create('p', parent = null, [], id, style = {
-		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
-		borderRadius: '15px',
-		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
-		padding: '20px 100px',
-		fontFamily: 'Century Gothic',
-		textAlign: 'center',
-	}, events = [], attrs = {
-		textContent: data.about,
-	})
-}
-
 const EducationUnit = (data) => {
-	const element = create('div', null, [], id = `education-unit${data.id}`, style = {
+	const element = create('div', null, [], `education-unit${data.id}`, {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -242,13 +263,13 @@ const EducationUnit = (data) => {
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], id = `education-unit-title`, style = {
+	create('h3', element, [], `education-unit-title`, {
 		fontWeight: '500',
 	}, [], {
 		textContent: `${data.startYear}-${data.endYear}, ${data.major} at ${data.school}`,
 	})
 
-	create('p', element, [], id = `education-unit-description`, style = {}, [], {
+	create('p', element, [], `education-unit-description`, {}, [], {
 		textContent: data.description,
 	})
 
@@ -256,13 +277,14 @@ const EducationUnit = (data) => {
 }
 
 const EducationUnits = (data, id) => {
-	const element = create('ul', null, [], id, style = {
+	const MIN_WIDTH = 350
+	const element = create('ul', null, [], id, {
 		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
+		maxWidth: '700px',
+		width: '100%',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
-		padding: '20px',
+		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 100px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -273,11 +295,15 @@ const EducationUnits = (data, id) => {
 		element.appendChild(EducationUnit(u))
 	})
 
+	window.addEventListener('resize', () => {
+		element.style.padding = window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 5%'
+	})
+
 	return element
 }
 
 const ExperienceUnit = (data) => {
-	const element = create('div', null, [], id = `experience-unit${data.id}`, style = {
+	const element = create('div', null, [], `experience-unit${data.id}`, {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -285,13 +311,13 @@ const ExperienceUnit = (data) => {
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], id = `experience-unit-title`, style = {
+	create('h3', element, [], `experience-unit-title`, {
 		fontWeight: '500',
 	}, [], {
 		textContent: `${data.startYear}-${data.endYear}, ${data.jobTitle} at ${data.company}`,
 	})
 
-	create('p', element, [], id = `experience-unit-description`, style = {}, [], {
+	create('p', element, [], `experience-unit-description`, {}, [], {
 		textContent: data.description,
 	})
 
@@ -299,13 +325,14 @@ const ExperienceUnit = (data) => {
 }
 
 const ExperienceUnits = (data, id) => {
-	const element = create('ul', null, [], id, style = {
+	const MIN_WIDTH = 350
+	const element = create('ul', null, [], id, {
 		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
+		maxWidth: '700px',
+		width: '100%',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
-		padding: '20px',
+		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 100px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -316,11 +343,15 @@ const ExperienceUnits = (data, id) => {
 		element.appendChild(ExperienceUnit(u))
 	})
 
+	window.addEventListener('resize', () => {
+		element.style.padding = window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 5%'
+	})
+
 	return element
 }
 
 const Project = (data) => {
-	const element = create('div', null, [], id = `project-${data.id}`, style = {
+	const element = create('div', null, [], `project-${data.id}`, {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -328,13 +359,13 @@ const Project = (data) => {
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], id = `project-title`, style = {
+	create('h3', element, [], `project-title`, {
 		fontWeight: '500',
 	}, [], {
 		textContent: data.name,
 	})
 
-	create('p', element, [], id = `project-description`, style = {}, [], {
+	create('p', element, [], `project-description`, {}, [], {
 		textContent: data.description,
 	})
 
@@ -342,13 +373,14 @@ const Project = (data) => {
 }
 
 const Projects = (data, id) => {
-	const element = create('ul', null, [], id, style = {
+	const MIN_WIDTH = 350
+	const element = create('ul', null, [], id, {
 		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
+		maxWidth: '700px',
+		width: '100%',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
-		padding: '20px',
+		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 100px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
@@ -357,6 +389,10 @@ const Projects = (data, id) => {
 
 	data.projects.forEach(p => {
 		element.appendChild(Project(p))
+	})
+
+	window.addEventListener('resize', () => {
+		element.style.padding = window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 5%'
 	})
 
 	return element
@@ -375,13 +411,13 @@ const Skill = (data) => {
 		return stars
 	}
 
-	const element = create('div', parent = null, [], id = `skill-${data.name}`, style = {
+	const element = create('div', null, [], `skill-${data.name}`, {
 		display: 'flex',
 		justifyContent: 'flex-end',
 		gap: '5px',
 	})
 
-	const ratingContainer = create('span', parent = element, [], id = `skill-${data.name}-level`, style = {
+	const ratingContainer = create('span', element, [], `skill-${data.name}-level`, {
 		color: {
 			'0.5': '#bd3a3a', '1.0': '#bd3a3a',
 			'1.5': '#cc9670', '2.0': '#cc9670',
@@ -394,20 +430,21 @@ const Skill = (data) => {
 		textAlign: 'right',
 		display: 'flex',
 		alignItems: 'center',
-	}, evenets = [], attrs = {})
+	})
 
-	starrify(data.level).forEach(s => create('i', ratingContainer, s.split(' '), '', {}, [], {}))
+	starrify(data.level).forEach(s => create('i', ratingContainer, s.split(' ')))
 
-	create('span', parent = element, [], id = `skill-${data.name}-name`, style = {
+	create('span', element, [], `skill-${data.name}-name`, {
 		textAlign: 'left',
 		fontWeight: 'bold',
-	}, evenets = [], attrs = {
+	}, [], {
 		textContent: data.name,
 	})
 
-	create('span', parent = element, [], id = `skill-${data.name}-name`, style = {
+	create('span', element, [], `skill-${data.name}-name`, {
 		textAlign: 'left',
-	}, evenets = [], attrs = {
+		fontSize: '.7em',
+	}, [], {
 		textContent: `( ${data.category} )`,
 	})
 
@@ -415,14 +452,16 @@ const Skill = (data) => {
 }
 
 const Skills = (data, id) => {
-	const element = create('ul', parent = null, [], id, style = {
+	const element = create('ul', null, [], id, {
 		backgroundColor: '#fff',
-		width: '700px',
-		minWidth: '500px',
+		maxWidth: '700px',
+		width: '100%',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
 		display: 'flex',
 		flexDirection: 'column',
+		// alignItems: 'flex-start',
+		justifyContent: 'center',
 		gap: '5px',
 		fontFamily: 'Century Gothic',
 		padding: '10px',
@@ -432,6 +471,22 @@ const Skills = (data, id) => {
 	data.skills.forEach(s => element.appendChild(Skill(s)))
 
 	return element
+}
+
+const ResumeContainer = (parent) => {
+	return create('div', parent, [], 'resume-container', {
+		// backgroundColor: 'coral',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		width: '100vw',
+		maxWidth: '700px',
+		minWidth: '350px',
+		padding: '20px',
+		paddingTop: '200px',
+		gap: '20px',
+	})
 }
 
 function makeData() {
@@ -610,26 +665,34 @@ function makeData() {
 
 function displayResponse(data) {
 	alert('This version is only for showcasing, data and design might not be accurate yet. The official version will be published shortly and ""will not have this alert"".')
-	const resumeContainer = document.getElementById('resume-container')
-	const header = Header(data)
-	const skills = Skills(data, 'resume-skills')
-	const contactLanguages = ContactLanguages(data, 'resume-contact-languages')
-	const about = About(data, 'resume-about')
-	const educationUnits = EducationUnits(data, 'resume-education')
-	const experienceUnits = ExperienceUnits(data, 'resume-experience')
-	const projects = Projects(data, 'resume-projects')
 	document.title = `${data.firstName} ${data.lastName}`
+
+	const resumeContainer = ResumeContainer(document.body)
+
+	const header = Header(data)
 	resumeContainer.appendChild(header)
+
+	const about = About(data, 'resume-about')
 	SectionTitle('About', resumeContainer, 'resume-about')
 	resumeContainer.appendChild(about)
+
 	SectionTitle('Skills', resumeContainer, 'resume-skills')
+	const skills = Skills(data, 'resume-skills')
 	resumeContainer.appendChild(skills)
+
+	const contactLanguages = ContactLanguages(data, 'resume-contact-languages')
 	SectionTitle('Contact & Languages', resumeContainer, 'resume-contact-languages')
 	resumeContainer.appendChild(contactLanguages)
+
+	const educationUnits = EducationUnits(data, 'resume-education')
 	SectionTitle('Education', resumeContainer, 'resume-education')
 	resumeContainer.appendChild(educationUnits)
+
+	const experienceUnits = ExperienceUnits(data, 'resume-experience')
 	SectionTitle('Professional Experience', resumeContainer, 'resume-experience')
 	resumeContainer.appendChild(experienceUnits)
+
+	const projects = Projects(data, 'resume-projects')
 	SectionTitle('Projects', resumeContainer, 'resume-projects')
 	resumeContainer.appendChild(projects)
 }
