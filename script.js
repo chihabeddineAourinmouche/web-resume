@@ -664,7 +664,7 @@ function makeData() {
 }
 
 function displayResponse(data) {
-	alert('This version is only for showcasing, data and design might not be accurate yet. The official version will be published shortly and ""will not have this alert"".')
+	alert('This version is only for showcasing; data and design might not be accurate yet. The official version will be published shortly and ""will not have this alert"".')
 	document.title = `${data.firstName} ${data.lastName}`
 
 	const resumeContainer = ResumeContainer(document.body)
