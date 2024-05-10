@@ -65,7 +65,7 @@ const Language = (data) => {
 	create('span', element, [], `language-${data.name}-proficiency`, {
 		color: {
 			'beginner': '#cc9670', 'intermediate': '#b5cc70',
-			'proficient': '#70adcc', 'bilingual': '#78cc70',
+			'proficient': '#78cc70', 'bilingual': '#70adcc',
 		}[data.level.toLowerCase()],
 		fontSize: '.8em',
 		fontWeight: 'bold',
