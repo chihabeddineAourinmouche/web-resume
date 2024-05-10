@@ -111,7 +111,7 @@ const ContactLanguages = (data, id) => {
 		display: 'flex',
 		flexDirection: window.innerWidth <= MIN_WIDTH ? 'column' : 'row',
 		alignItems: window.innerWidth <= MIN_WIDTH ? 'flex-end' : 'flex-start',
-		justifyContent: 'space-between',
+		justifyContent: 'space-around',
 		gap: '20px',
 		fontFamily: 'Century Gothic',
 	})
