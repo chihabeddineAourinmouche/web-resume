@@ -21,6 +21,20 @@ const Project = (data) => {
 		textContent: data.description,
 	})
 
+	const skills = create('span', element, [], `project-skills`, {
+		display: 'flex',
+		alignItems: 'center',
+		gap: '2px',
+		fontSize: '.6em',
+	})
+
+	data.skills.forEach(skill => create('span', skills, [], `project-skill-${skill}`, {
+		backgroundColor: '#d6c6c3',
+		padding: '2px 5px',
+		display: 'flex',
+		borderRadius: '15px',
+	}, [], { textContent: skill }))
+
 	return element
 }
 

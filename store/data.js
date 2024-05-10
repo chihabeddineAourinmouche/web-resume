@@ -19,7 +19,7 @@ const data = {
 		{
 			id: 2,
 			endYear: 2018,
-			school: "Université de CAen Normandie",
+			school: "Université de Caen Normandie",
 			major: "Bachelor in Computer Science",
 			description: "Within the first 2 years, I studied general topics in Computer Science, and within the third year, I leaned more towards Software Development and Algorithmics.",
 		},
@@ -122,42 +122,50 @@ const data = {
 		{
 			id: 1,
 			name: "Web Resume",
-			description: "Developing a web application 'Web Resume' allowing users to create dynamic, interactive resumes with multimedia elements. This solution aims to Increase user engagement through embedded videos and skills visualizations. Work in progress..."
+			description: "Developing a web application 'Web Resume' allowing users to create dynamic, interactive resumes with multimedia elements. This solution aims to Increase user engagement through embedded videos and skills visualizations. Work in progress...",
+			skills: ['Python3', 'Django', 'TypeScript', 'Vue3', 'Git', 'Docker', 'Bash'],
 		},
 		{
 			id: 2,
 			name: "BabelJS",
-			description: "I participated in a video game development contest created by Microsoft featuring their Web based 3D Rendering Technology Babylon.JS. As part of a 3-student team, we managed to enter the contest with a video game that gathered most of the aspect of an intreging video game. We managed to win the prize of the best graphics (For the second time in a row.)"
+			description: "I participated in a video game development contest created by Microsoft featuring their Web based 3D Rendering Technology Babylon.JS. As part of a 3-student team, we managed to enter the contest with a video game that gathered most of the aspect of an intreging video game. We managed to win the prize of the best graphics (For the second time in a row.)",
+			skills: ['JavaScript', 'Babylon.js', 'Blender', 'Photoshop'],
 		},
 		{
 			id: 3,
 			name: "Viridis",
-			description: "As part of a 3-student team, we participated in a video game contest where we won the prize of best graphics. The game was developed using the platform Pico8."
+			description: "As part of a 3-student team, we participated in a video game contest where we won the prize of best graphics. The game was developed using the platform Pico8.",
+			skills: ['Pico 8', 'LUA'],
 		},
 		{
 			id: 4,
 			name: "Robot",
-			description: "A maze solving robot developed using Arduino."
+			description: "A maze solving robot developed using Arduino.",
+			skills: ['Arduino', 'C++', 'Git'],
 		},
 		{
 			id: 5,
 			name: "Web Development Tutoring",
-			description: "Tutored a student in order to prepare for an exam to access school by coaching her in web application development."
+			description: "Tutored a student in order to prepare for an exam to access school by coaching her in web application development.",
+			skills: ['HTML', 'CSS', 'JavaScript', 'Git'],
 		},
 		{
 			id: 6,
 			name: "Standalone Pseudo-Random Terrain Generator",
-			description: "As part of a class project, I developed two versions of a standalone terrain generator, one in Java and the other in Python."
+			description: "As part of a class project, I developed two versions of a standalone terrain generator, one in Java and the other in Python.",
+			skills: ['Python3', 'Git'],
 		},
 		{
 			id: 7,
 			name: "Scientific Study - Graph Theory",
-			description: "As part of a class project, in a team of three student, we produced a study document about the use of graph theory in solving problems such as mazes. We developed a python application that generates a maze and its solution in order to demonstrate our case."
+			description: "As part of a class project, in a team of three student, we produced a study document about the use of graph theory in solving problems such as mazes. We developed a python application that generates a maze and its solution in order to demonstrate our case.",
+			skills: ['Python', 'Git'],
 		},
 		{
 			id: 8,
 			name: "AI-powered Sokoban",
-			description: "As part of a class project, I developed the Sokoban ai-powered game. The AI solution aimed to create an automatic solver of the game."
+			description: "As part of a class project, I developed the Sokoban ai-powered game. The AI solution aimed to create an automatic solver of the game.",
+			skills: ['OOP', 'Python', 'Java', 'PyGame', 'Git', 'A-Star'],
 		}
 	],
 	skills: [
