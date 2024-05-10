@@ -6,8 +6,8 @@ const Skill = (data) => {
 		const emptyStars = 5 - fullStars - (halfStar ? 1 : 0)
 		let stars = []
 		for (let i = 0; i < fullStars; i++) stars.push('fa fa-star')
-		if (halfStar) stars.push('fa fa-star-half-empty')
-		for (let i = 0; i < emptyStars; i++) stars.push('fa fa-star-o')
+		if (halfStar) stars.push('fa-solid fa-star-half-stroke')
+		for (let i = 0; i < emptyStars; i++) stars.push('fa-regular fa-star')
 		return stars
 	}
 

@@ -17,7 +17,7 @@ const Contact = (data) => {
 		userSelect: 'text',
 	})
 
-	create('i', address, 'fa fa-map-marker'.split(' '), '', {
+	create('i', address, 'fa-solid fa-location-dot'.split(' '), '', {
 		display: 'flex',
 		alignItems: 'center',
 	})
@@ -38,7 +38,7 @@ const Contact = (data) => {
 		userSelect: 'text',
 	})
 
-	create('i', email, 'fa fa-envelope-square'.split(' '), '', {
+	create('i', email, 'fa-regular fa-envelope'.split(' '), '', {
 		display: 'flex',
 		alignItems: 'center',
 	})
