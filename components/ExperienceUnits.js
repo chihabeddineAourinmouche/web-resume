@@ -13,7 +13,11 @@ const ExperienceUnit = (data) => {
 		textContent: `${data.startYear}-${data.endYear}, ${data.jobTitle} at ${data.company}`,
 	})
 
-	create('p', element, [], `experience-unit-description`, {}, [], {
+	create('p', element, [], `experience-unit-description`, {
+		fontSize: '.8em',
+		color: '#555',
+		textAlign: 'justify',
+	}, [], {
 		textContent: data.description,
 	})
 

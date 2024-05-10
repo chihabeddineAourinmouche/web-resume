@@ -13,7 +13,11 @@ const Project = (data) => {
 		textContent: data.name,
 	})
 
-	create('p', element, [], `project-description`, {}, [], {
+	create('p', element, [], `project-description`, {
+		fontSize: '.8em',
+		color: '#555',
+		textAlign: 'justify',
+	}, [], {
 		textContent: data.description,
 	})
 

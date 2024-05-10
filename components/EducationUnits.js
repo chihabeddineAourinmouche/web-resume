@@ -13,7 +13,11 @@ const EducationUnit = (data) => {
 		textContent: `${data.endYear}, ${data.major} at ${data.school}`,
 	})
 
-	create('p', element, [], `education-unit-description`, {}, [], {
+	create('p', element, [], `education-unit-description`, {
+		fontSize: '.8em',
+		color: '#555',
+		textAlign: 'justify',
+	}, [], {
 		textContent: data.description,
 	})
 
