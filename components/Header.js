@@ -11,7 +11,7 @@ const Header = (data) => {
 		flexDirection: window.innerWidth <= MIN_WIDTH ? 'column' : 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		gap: '10px',
+		gap: '30px',
 		fontFamily: 'Century Gothic',
 	})
 

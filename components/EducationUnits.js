@@ -10,7 +10,7 @@ const EducationUnit = (data) => {
 	create('h3', element, [], `education-unit-title`, {
 		fontWeight: '500',
 	}, [], {
-		textContent: `${data.startYear}-${data.endYear}, ${data.major} at ${data.school}`,
+		textContent: `${data.endYear}, ${data.major} at ${data.school}`,
 	})
 
 	create('p', element, [], `education-unit-description`, {}, [], {
