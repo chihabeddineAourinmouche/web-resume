@@ -2,7 +2,7 @@ const data = {
 	id: 1,
 	address: {
 		id: 1,
-		street: "17 rue de russie",
+		street: "",
 		city: "Nice",
 		state: "Côte d'Azur",
 		country: "France",

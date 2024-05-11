@@ -27,8 +27,8 @@ const Contact = (data) => {
 		userSelect: 'inherit',
 		cursor: 'pointer',
 	}, [], {
-		textContent: `${data.address.street} - ${data.address.city} ${data.address.postal_code}, ${data.address.state}, ${data.address.country}`,
-		href: `https://www.google.com/maps/place/${data.address.street} - ${data.address.city} ${data.address.postal_code}, ${data.address.state}, ${data.address.country}`,
+		textContent: `${!['', undefined, null].includes(data.address.street) ? data.address.street + ' - ' : ''}${data.address.city} ${data.address.postal_code}, ${data.address.state}, ${data.address.country}`,
+		href: `https://www.google.com/maps/place/${!['', undefined, null].includes(data.address.street) ? data.address.street + ' - ' : ''}${data.address.city} ${data.address.postal_code}, ${data.address.state}, ${data.address.country}`,
 		target: '_blank',
 	})
 
