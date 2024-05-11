@@ -49,7 +49,7 @@ const data = {
 		},
 		{
 			id: 2,
-			startYear: 2022,
+			startYear: 2023,
 			endYear: 2022,
 			company: "Schneider Electric",
 			jobTitle: "SAP/Full-Stack Software Engineer",
