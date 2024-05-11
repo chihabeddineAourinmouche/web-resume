@@ -49,8 +49,8 @@ const data = {
 		},
 		{
 			id: 2,
-			startYear: 2023,
-			endYear: 2022,
+			startYear: 2022,
+			endYear: 2023,
 			company: "Schneider Electric",
 			jobTitle: "SAP/Full-Stack Software Engineer",
 			description: "As part of a small team, I implemented a solution integrating SAP solutions into an Edge Computing application. I must note that our solution received particular cheering from the head of Industrial Automation."
