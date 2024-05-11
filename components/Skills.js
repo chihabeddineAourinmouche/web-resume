@@ -1,4 +1,5 @@
 const Skill = (data) => {
+	const MIN_WIDTH = 461
 	const starrify = (r) => {
 		const rating = parseFloat(r)
 		const fullStars = Math.floor(rating)
@@ -13,7 +14,7 @@ const Skill = (data) => {
 
 	const element = create('div', null, [], `skill-${data.name}`, {
 		display: 'flex',
-		justifyContent: 'flex-end',
+		justifyContent: window.innerWidth <= MIN_WIDTH ? 'flex-start' : 'flex-end',
 		gap: '5px',
 	})
 
@@ -48,6 +49,10 @@ const Skill = (data) => {
 		textContent: `( ${data.category} )`,
 	})
 
+	window.addEventListener('resize', () => {
+		element.style.justifyContent = window.innerWidth <= MIN_WIDTH ? 'flex-start' : 'flex-end'
+	})
+
 	return element
 }
 
@@ -60,7 +65,6 @@ const Skills = (data, id) => {
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
 		display: 'flex',
 		flexDirection: 'column',
-		// alignItems: 'flex-start',
 		justifyContent: 'center',
 		gap: '5px',
 		fontFamily: 'Century Gothic',
