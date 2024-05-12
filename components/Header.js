@@ -19,7 +19,9 @@ const Header = (data) => {
 		height: '150px',
 		width: '150px',
 		borderRadius: '50%',
-		border: '10px solid #b35949',
+		borderWidth: '10px',
+		borderStyle: 'solid',
+		borderColor: Theme().getColors().secondaryColor,
 	}, [], { src: data.image })
 
 	const textContainer = create('div', element, [], 'fullname-title-container', {
@@ -33,7 +35,7 @@ const Header = (data) => {
 
 	create('h2', textContainer, [], 'fullname', {
 		fontSize: '1.7rem',
-		color: '#b35949',
+		color: Theme().getColors().secondaryColor,
 	}, [], {
 		textContent: `${data.firstName} ${data.lastName}`,
 	})

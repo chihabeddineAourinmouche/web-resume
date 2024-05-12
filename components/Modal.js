@@ -47,7 +47,7 @@ const Modal = (text) => {
 		top: '10px',
 		right: '10px',
 		cursor: 'pointer',
-		color: '#b35949',
+		color: Theme().getColors().secondaryColor,
 	}, [{ name: 'click', handler: e => element.remove() }])
 
 	return element

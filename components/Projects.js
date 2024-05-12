@@ -29,7 +29,8 @@ const Project = (data) => {
 	})
 
 	data.skills.forEach(skill => create('span', skills, [], `project-skill-${skill}`, {
-		backgroundColor: '#d6c6c3',
+		backgroundColor: Theme().getColors().tertiaryColor,
+		color: Theme().getColors().tertiaryColorContrast,
 		padding: '2px 5px',
 		display: 'flex',
 		borderRadius: '15px',
