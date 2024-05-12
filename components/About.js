@@ -6,7 +6,7 @@ const About = (data, id) => {
 		width: '100%',
 		borderRadius: '15px',
 		boxShadow: '0 2px 2px rgba(0, 0, 0, 0.1)',
-		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 100px',
+		padding: window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 10%',
 		fontFamily: 'Century Gothic',
 		textAlign: 'center',
 	}, [], {
