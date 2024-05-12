@@ -1,5 +1,10 @@
 const data = {
 	id: 1,
+	theme: {
+		primaryColor: "#EFEFEF",
+		secondaryColor: "#b35949",
+		tertiaryColor: "#d6c6c3"
+	},
 	address: {
 		id: 1,
 		street: "",

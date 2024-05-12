@@ -1,8 +1,5 @@
 const Theme = () => {
 	const NAME = 'theme'
-	const DEFAULT_PRIMARY_COLOR = '#EFEFEF'
-	const DEFAULT_SECONDARY_COLOR = '#b35949'
-	const DEFAULT_TERTIARY_COLOR = '#d6c6c3'
 	const DARK_CONTRAST_COLOR = '#000'
 	const LIGHT_CONTRAST_COLOR = '#fff'
 
@@ -69,18 +66,13 @@ const Theme = () => {
 	const setPrimaryColor = (value) => setColor('primaryColor', value)
 	const setSecondaryColor = (value) => setColor('secondaryColor', value)
 	const setTertiaryColor = (value) => setColor('tertiaryColor', value)
-	const setColors = (data = null) => {
-		data = data || {
-			primaryColor: DEFAULT_PRIMARY_COLOR,
-			secondaryColor: DEFAULT_SECONDARY_COLOR,
-			tertiaryColor: DEFAULT_TERTIARY_COLOR,
-		}
+	const setColors = () => {
 		if (!localStorageManager.has(NAME)) {
 			localStorageManager.set(NAME, {})
 		}
-		setPrimaryColor(data.primaryColor)
-		setSecondaryColor(data.secondaryColor)
-		setTertiaryColor(data.tertiaryColor)
+		setPrimaryColor(data.theme.primaryColor)
+		setSecondaryColor(data.theme.secondaryColor)
+		setTertiaryColor(data.theme.tertiaryColor)
 	}
 
 	// GETTERS
