@@ -3,7 +3,7 @@ const Particle = (parent, width, color, classNames) => {
 	const randomSize = randomInt(10, 100)
 
 	const element = create('i', parent, classNames, '', {
-		fontSize: `${randomSize}px`,
+		fontSize: `${randomSize / 20}rem`,
 		color: color,
 		opacity: .25 / randomInt(3, 10),
 		position: 'absolute',
