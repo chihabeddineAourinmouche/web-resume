@@ -1,3 +1,5 @@
+// THIS COMPONENT DRAWS ICONS IN THE BACKGROUND ABOVE THE ACTUAL RESUME
+
 const Particle = (parent, color, classNames, size, position) => {
 	const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
