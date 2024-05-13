@@ -58,7 +58,7 @@ const data = {
 			id: 3,
 			endYear: 2014,
 			school: "École des Hautes Études de Biotechnologie, Casablanca, Maroc",
-			major: "Bachenor in Bio-Technology",
+			major: "Bachelor in Bio-Technology",
 			description: "Interested by Biology and Technology, I studied Bio-Technology where I was introduced to concepts in Biology, Health, and Computer Science.",
 		},
 		{
