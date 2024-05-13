@@ -1,22 +1,55 @@
-const Particle = (parent, width, color, classNames) => {
+const Particle = (parent, color, classNames, size, position) => {
 	const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
-	const randomSize = randomInt(10, 100)
 
 	const element = create('i', parent, classNames, '', {
-		fontSize: `${randomSize / 20}rem`,
+		fontSize: `${size / 20}rem`,
 		color: color,
 		opacity: .25 / randomInt(3, 10),
 		position: 'absolute',
-		top: `${randomInt(0, 200 - randomSize)}px`,
-		left: `${randomInt(0, width)}px`,
-	})
-
-	window.addEventListener('resize', () => {
-		element.style.left = `${randomInt(0, width)}px`
+		top: `${position.top}px`,
+		left: `${position.left}px`,
 	})
 
 	return element
 }
+
+const generateSizesPositions = (numParticles, containerWidth, containerHeight, minSize, maxSize) => {
+	const particles = []
+	for (let i = 0; i < numParticles; i++) {
+		let validPlacement = false
+		let size
+		let top
+		let left
+		while (!validPlacement) {
+			// GENERATE RANDOM SIZE AND POSITION WITHIN CONTAINER BOUNDS
+			size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize
+			top = Math.floor(Math.random() * (containerHeight - size + 1))
+			left = Math.floor(Math.random() * (containerWidth - size + 1))
+			// CHECK FOR COLLISION WITH OTHER PARTICLES OR CONTAINER EDGES
+			validPlacement = true
+			for (const particle of particles) {
+				const distanceX = Math.abs(left - particle.left)
+				const distanceY = Math.abs(top - particle.top)
+				const combinedRadius = size / 2 + particle.size / 2
+				// COLLISION IF DISTANCE BETWEEN CENTERS IS LESS THAN COMBINED RADIUS
+				if (distanceX < combinedRadius && distanceY < combinedRadius) {
+					validPlacement = false
+					break
+				}
+			}
+			// CHECK FOR PLACEMENT WITHIN CONTAINER BOUNDS
+			if (top < 0 || left < 0 || top + size > containerHeight || left + size > containerWidth) {
+				validPlacement = false
+			}
+		}
+		particles.push({
+			size,
+			position: { top, left }
+		})
+	}
+	return particles
+}
+
 
 const Background = (data) => {
 	const iconsClassNames = data.theme.backgroundIcons
@@ -28,8 +61,11 @@ const Background = (data) => {
 	})
 	const fa_class_names = [].concat(...Array(3).fill(iconsClassNames))
 	const randomSubset = fa_class_names.slice().sort(() => Math.random() - 0.5).slice(0, Math.floor(fa_class_names.length / 2))
-	randomSubset.forEach(cn => {
-		Particle(element, window.innerWidth, Theme().getColors().secondaryColor, cn.split(' '))
-	})
+	const sizesPositions = generateSizesPositions(randomSubset.length, window.innerWidth, 200, 10, 100)
+	for (let i = 0; i < randomSubset.length; i++) {
+		const sp = sizesPositions[i]
+		const cn = randomSubset[i]
+		Particle(element, Theme().getColors().secondaryColor, cn.split(' '), sp.size, sp.position)
+	}
 	return element
 }
