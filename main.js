@@ -1,8 +1,13 @@
 const displayResume = (data) => {
 	document.title = `${data.firstName} ${data.lastName}`
-	document.body.style.backgroundColor = Theme().getColors().primaryColor
+	
+	const body = document.body
+	body.style.backgroundColor = Theme().getColors().primaryColor
+	
+	const background = Background(data)
+	body.appendChild(background)
 
-	const resumeContainer = ResumeContainer(document.body)
+	const resumeContainer = ResumeContainer(body)
 
 	const header = Header(data)
 	resumeContainer.appendChild(header)

@@ -3,7 +3,33 @@ const data = {
 	theme: {
 		primaryColor: "#EFEFEF",
 		secondaryColor: "#b35949",
-		tertiaryColor: "#d6c6c3"
+		tertiaryColor: "#d6c6c3",
+		backgroundIcons: [
+			/*
+			  - EMPTY THE LIST IF YOU WOULD PREFER NOT
+			    HAVING BACKGROUND ICONS.
+			  - OTHERSWISE, BROWSE https://fontawesome.com/icons/
+			    FOR ICONS YOU COULD USE.
+			*/
+			'fa-solid fa-cloud',
+			'fa-solid fa-terminal',
+			'fa-solid fa-code',
+			'fa-solid fa-code-compare',
+			'fa-solid fa-code-branch',
+			'fa-solid fa-language',
+			'fa-solid fa-sitemap',
+			'fa-solid fa-gamepad',
+			'fa-solid fa-database',
+			'fa-brands fa-java',
+			'fa-brands fa-js',
+			'fa-brands fa-golang',
+			'fa-brands fa-python',
+			'fa-brands fa-html5',
+			'fa-brands fa-css3-alt',
+			'fa-brands fa-android',
+			'fa-brands fa-docker',
+			'fa-brands fa-firefox-browser',
+		],
 	},
 	address: {
 		id: 1,
