@@ -52,6 +52,7 @@ const generateSizesPositions = (numParticles, containerWidth, containerHeight, m
 
 
 const Background = (data) => {
+	const MIN_WIDTH = 350
 	const iconsClassNames = data.theme.backgroundIcons
 	const element = create('div', null, [], 'background', {
 		width: '100%',
@@ -60,12 +61,37 @@ const Background = (data) => {
 		overflowX: 'hidden',
 	})
 	const fa_class_names = [].concat(...Array(3).fill(iconsClassNames))
-	const randomSubset = fa_class_names.slice().sort(() => Math.random() - 0.5).slice(0, Math.floor(fa_class_names.length / 2))
-	const sizesPositions = generateSizesPositions(randomSubset.length, window.innerWidth, 200, 10, 100)
-	for (let i = 0; i < randomSubset.length; i++) {
-		const sp = sizesPositions[i]
-		const cn = randomSubset[i]
-		Particle(element, Theme().getColors().secondaryColor, cn.split(' '), sp.size, sp.position)
+	const particles = []
+	function calculateSubsetRatio(width) {
+		const someThreshold = 500 // I WANT THAT AT 500 I HAVE THE FULL SET OF ICON CLASSES
+		const someOtherThreshold = 500 // THE LARGER THE SLOWER THE DECREESE
+		// DEFINE A BASELINE RATIO (E.G., 0.5 FOR HALF) AND ADJUST BASED ON WIDTH
+		const baseRatio = 0.5;
+		const adjustmentFactor = (width - someThreshold) / someOtherThreshold; // ADJUST AS NEEDED
+
+		// CLAMP THE RATIO BETWEEN 0 AND 1 TO AVOID OUT-OF-BOUNDS ERRORS
+		return Math.min(Math.max(baseRatio + adjustmentFactor, 0), 1);
 	}
+	const generateParticles = () => {
+		const randomSubset = fa_class_names.slice().sort(() => Math.random() - 0.5).slice(0, Math.floor(fa_class_names.length * calculateSubsetRatio(Math.max(window.innerWidth, MIN_WIDTH))));
+		const sizesPositions = generateSizesPositions(randomSubset.length, Math.max(window.innerWidth, MIN_WIDTH), 200, 10, 100)
+		for (let i = 0; i < randomSubset.length; i++) {
+			const sp = sizesPositions[i]
+			const cn = randomSubset[i]
+			particles.push(Particle(element, Theme().getColors().secondaryColor, cn.split(' '), sp.size, sp.position))
+		}
+	}
+	const clearParticles = () => {
+		particles.forEach(particle => particle.remove())
+	}
+	const updateParticles = () => {
+		clearParticles()
+		generateParticles()
+	}
+
+	generateParticles()
+
+	window.addEventListener('resize', updateParticles)
+
 	return element
 }
