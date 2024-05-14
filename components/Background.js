@@ -91,9 +91,21 @@ const Background = (data) => {
 		generateParticles()
 	}
 
+	const onHorizontalResize = () => {
+		updateParticles()
+	}
+
 	generateParticles()
 
-	window.addEventListener('resize', updateParticles)
+	let previousWidth = window.innerWidth
+	window.addEventListener('resize', () => {
+		const currentWidth = window.innerWidth
+		const widthDifference = currentWidth - previousWidth
+		if (widthDifference !== 0) {
+			onHorizontalResize()
+		}
+		previousWidth = currentWidth
+	})
 
 	return element
 }

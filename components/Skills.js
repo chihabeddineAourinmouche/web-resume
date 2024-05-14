@@ -49,8 +49,18 @@ const Skill = (data) => {
 		textContent: `( ${data.category} )`,
 	})
 
-	window.addEventListener('resize', () => {
+	const onHorizontalResize = () => {
 		element.style.justifyContent = window.innerWidth <= MIN_WIDTH ? 'flex-start' : 'flex-end'
+	}
+	
+	let previousWidth = window.innerWidth
+	window.addEventListener('resize', () => {
+		const currentWidth = window.innerWidth
+		const widthDifference = currentWidth - previousWidth
+		if (widthDifference !== 0) {
+			onHorizontalResize()
+		}
+		previousWidth = currentWidth
 	})
 
 	return element

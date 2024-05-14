@@ -118,9 +118,19 @@ const ContactLanguages = (data, id) => {
 	element.appendChild(Contact(data))
 	element.appendChild(Languages(data))
 
-	window.addEventListener('resize', () => {
+	const onHorizontalResize = () => {
 		element.style.flexDirection = window.innerWidth <= MIN_WIDTH ? 'column' : 'row'
 		element.style.alignItems = window.innerWidth <= MIN_WIDTH ? 'flex-end' : 'flex-start'
+	}
+	
+	let previousWidth = window.innerWidth
+	window.addEventListener('resize', () => {
+		const currentWidth = window.innerWidth
+		const widthDifference = currentWidth - previousWidth
+		if (widthDifference !== 0) {
+			onHorizontalResize()
+		}
+		previousWidth = currentWidth
 	})
 
 	return element

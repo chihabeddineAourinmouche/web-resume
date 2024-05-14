@@ -13,8 +13,18 @@ const About = (data, id) => {
 		textContent: data.about,
 	})
 
-	window.addEventListener('resize', () => {
+	const onHorizontalResize = () => {
 		element.style.padding = window.innerWidth <= MIN_WIDTH ? '20px 20px' : '20px 10%'
+	}
+	
+	let previousWidth = window.innerWidth
+	window.addEventListener('resize', () => {
+		const currentWidth = window.innerWidth
+		const widthDifference = currentWidth - previousWidth
+		if (widthDifference !== 0) {
+			onHorizontalResize()
+		}
+		previousWidth = currentWidth
 	})
 
 	return element

@@ -46,9 +46,19 @@ const Header = (data) => {
 		textContent: data.title,
 	})
 
-	window.addEventListener('resize', () => {
+	const onHorizontalResize = () => {
 		element.style.borderRadius = window.innerWidth <= MIN_WIDTH ? '15px' : '100px 15px 15px 100px'
 		element.style.flexDirection = window.innerWidth <= MIN_WIDTH ? 'column' : 'row'
+	}
+	
+	let previousWidth = window.innerWidth
+	window.addEventListener('resize', () => {
+		const currentWidth = window.innerWidth
+		const widthDifference = currentWidth - previousWidth
+		if (widthDifference !== 0) {
+			onHorizontalResize()
+		}
+		previousWidth = currentWidth
 	})
 
 	return element;
