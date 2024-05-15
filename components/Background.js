@@ -1,5 +1,3 @@
-// THIS COMPONENT DRAWS ICONS IN THE BACKGROUND ABOVE THE ACTUAL RESUME
-
 const Particle = (parent, color, classNames, size, position) => {
 	const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -76,11 +74,22 @@ const Background = (data) => {
 	}
 	const generateParticles = () => {
 		const randomSubset = fa_class_names.slice().sort(() => Math.random() - 0.5).slice(0, Math.floor(fa_class_names.length * calculateSubsetRatio(Math.max(window.innerWidth, MIN_WIDTH))));
-		const sizesPositions = generateSizesPositions(randomSubset.length, Math.max(window.innerWidth, MIN_WIDTH), 200, 30, Math.min(window.innerWidth / 10, 70))
+		const sizesPositions = generateSizesPositions(
+			randomSubset.length,
+			Math.max(window.innerWidth, MIN_WIDTH),
+			200, 30,
+			Math.min(window.innerWidth / 10, 70)
+		)
 		for (let i = 0; i < randomSubset.length; i++) {
 			const sp = sizesPositions[i]
 			const cn = randomSubset[i]
-			particles.push(Particle(element, Theme().getColors().secondaryColor, cn.split(' '), sp.size, sp.position))
+			particles.push(
+				Particle(
+					element,
+					Theme().getColors().secondaryColor,
+					cn.split(' '), sp.size, sp.position
+				)
+			)
 		}
 	}
 	const clearParticles = () => {
