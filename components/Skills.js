@@ -77,7 +77,6 @@ const Skills = (data, id) => {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		gap: '5px',
-		fontFamily: 'Century Gothic',
 		padding: '10px',
 		textDecoration: 'none',
 	})

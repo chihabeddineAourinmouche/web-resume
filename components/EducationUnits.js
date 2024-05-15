@@ -3,13 +3,10 @@ const EducationUnit = (data) => {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		fontFamily: 'Century Gothic',
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], `education-unit-title`, {
-		fontWeight: '500',
-	}, [], {
+	create('h3', element, [], `education-unit-title`, {}, [], {
 		textContent: `${data.endYear}, ${data.major} at ${data.school}`,
 	})
 

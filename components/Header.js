@@ -12,7 +12,6 @@ const Header = (data) => {
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		gap: '30px',
-		fontFamily: 'Century Gothic',
 	})
 
 	create('img', element, [], 'profile-picture', {
@@ -40,9 +39,7 @@ const Header = (data) => {
 		textContent: `${data.firstName} ${data.lastName}`,
 	})
 
-	create('h3', textContainer, [], 'fullname', {
-		fontWeight: '500',
-	}, [], {
+	create('h3', textContainer, [], 'fullname', {}, [], {
 		textContent: data.title,
 	})
 

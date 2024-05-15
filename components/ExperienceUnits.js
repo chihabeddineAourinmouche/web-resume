@@ -3,13 +3,10 @@ const ExperienceUnit = (data) => {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		fontFamily: 'Century Gothic',
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], `experience-unit-title`, {
-		fontWeight: '500',
-	}, [], {
+	create('h3', element, [], `experience-unit-title`, {}, [], {
 		textContent: `${data.startYear}-${data.endYear}, ${data.jobTitle} at ${data.company}`,
 	})
 

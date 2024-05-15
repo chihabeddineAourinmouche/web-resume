@@ -6,7 +6,6 @@ const Contact = (data) => {
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '15px',
-		fontFamily: 'Century Gothic',
 		padding: '10px',
 		maxWidth: '300px',
 	})
@@ -93,7 +92,6 @@ const Languages = (data) => {
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '5px',
-		fontFamily: 'Century Gothic',
 		padding: '10px',
 		textDecoration: 'none',
 	})
@@ -113,7 +111,6 @@ const ContactLanguages = (data, id) => {
 		alignItems: window.innerWidth <= MIN_WIDTH ? 'flex-end' : 'flex-start',
 		justifyContent: 'space-around',
 		gap: '20px',
-		fontFamily: 'Century Gothic',
 	})
 	element.appendChild(Contact(data))
 	element.appendChild(Languages(data))

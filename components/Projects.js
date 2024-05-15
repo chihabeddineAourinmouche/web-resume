@@ -3,13 +3,10 @@ const Project = (data) => {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		fontFamily: 'Century Gothic',
 		listStyleType: 'none',
 	})
 
-	create('h3', element, [], `project-title`, {
-		fontWeight: '500',
-	}, [], {
+	create('h3', element, [], `project-title`, {}, [], {
 		textContent: data.name,
 	})
 

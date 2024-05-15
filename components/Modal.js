@@ -11,7 +11,6 @@ const Modal = (text) => {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		fontFamily: 'Century Gothic',
 	}, [
 		{ name: 'click', handler: e => element.remove() },
 		{ name: 'wheel', handler: e => e.preventDefault() },
