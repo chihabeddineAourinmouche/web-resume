@@ -21,7 +21,7 @@ const Header = (data) => {
 		borderWidth: '10px',
 		borderStyle: 'solid',
 		borderColor: Theme().getColors().secondaryColor,
-	}, [], { src: data.image })
+	}, [], { src: data.image, draggable: false })
 
 	const textContainer = create('div', element, [], 'fullname-title-container', {
 		paddingTop: '20px',
