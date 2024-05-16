@@ -72,7 +72,7 @@ const Language = (data) => {
 		display: 'flex',
 		alignItems: 'center',
 	}, [], {
-		textContent: data.level,
+		textContent: data.levelName,
 	})
 
 	create('span', element, [], `language-${data.name}-name`, {

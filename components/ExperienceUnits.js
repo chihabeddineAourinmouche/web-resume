@@ -7,7 +7,7 @@ const ExperienceUnit = (data) => {
 	})
 
 	create('h3', element, [], `experience-unit-title`, {}, [], {
-		textContent: `${data.startYear}-${data.endYear}, ${data.jobTitle} at ${data.company}`,
+		textContent: `${data.startYear}-${data.endYear}, ${data.jobTitle} @ ${data.company}`,
 	})
 
 	create('p', element, [], `experience-unit-description`, {

@@ -13,32 +13,32 @@ const displayResume = (data) => {
 	resumeContainer.appendChild(header)
 
 	const resumeAboutId = 'resume-about'
-	SectionTitle('About', resumeContainer, resumeAboutId)
+	SectionTitle(data.ui.about, resumeContainer, resumeAboutId)
 	const about = About(data, resumeAboutId)
 	resumeContainer.appendChild(about)
 
 	const resumeSkillsId = 'resume-skills'
-	SectionTitle('Skills', resumeContainer, resumeSkillsId)
+	SectionTitle(data.ui.skills, resumeContainer, resumeSkillsId)
 	const skills = Skills(data, resumeSkillsId)
 	resumeContainer.appendChild(skills)
 
 	const resumeContactLanguagesId = 'resume-contact-languages'
-	SectionTitle('Contact & Languages', resumeContainer, resumeContactLanguagesId)
+	SectionTitle(`${data.ui.contact} & ${data.ui.languages}`, resumeContainer, resumeContactLanguagesId)
 	const contactLanguages = ContactLanguages(data, resumeContactLanguagesId)
 	resumeContainer.appendChild(contactLanguages)
 
 	const resumeEducationId = 'resume-education'
-	SectionTitle('Education', resumeContainer, resumeEducationId)
+	SectionTitle(data.ui.education, resumeContainer, resumeEducationId)
 	const educationUnits = EducationUnits(data, resumeEducationId)
 	resumeContainer.appendChild(educationUnits)
 
 	const resumeExperienceId = 'resume-experience'
-	SectionTitle('Professional Experience', resumeContainer, resumeExperienceId)
+	SectionTitle(data.ui.experience, resumeContainer, resumeExperienceId)
 	const experienceUnits = ExperienceUnits(data, resumeExperienceId)
 	resumeContainer.appendChild(experienceUnits)
 
 	const resumeProjectsId = 'resume-projects'
-	SectionTitle('Projects', resumeContainer, resumeProjectsId)
+	SectionTitle(data.ui.projects, resumeContainer, resumeProjectsId)
 	const projects = Projects(data, resumeProjectsId)
 	resumeContainer.appendChild(projects)
 }
