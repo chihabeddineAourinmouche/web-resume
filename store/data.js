@@ -759,13 +759,14 @@ const uiIt = {
 	}
 }
 
-const DEFAULT_LANGUAGE = 'en'
-
-const data = {
-	ui: uiIt[localStorageManager.get('language') || DEFAULT_LANGUAGE],
-	...config,
-	...{
-		en: dataEN,
-		fr: dataFR,
-	}[localStorageManager.get('language') || DEFAULT_LANGUAGE]
+const getData = () => {
+	language = localStorageManager.get('language') || 'en'
+	return {
+		ui: uiIt[language],
+		...config,
+		...{
+			en: dataEN,
+			fr: dataFR,
+		}[language]
+	}
 }

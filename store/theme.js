@@ -70,9 +70,9 @@ const Theme = () => {
 		if (!localStorageManager.has(NAME)) {
 			localStorageManager.set(NAME, {})
 		}
-		setPrimaryColor(data.theme.primaryColor)
-		setSecondaryColor(data.theme.secondaryColor)
-		setTertiaryColor(data.theme.tertiaryColor)
+		setPrimaryColor(getData().theme.primaryColor)
+		setSecondaryColor(getData().theme.secondaryColor)
+		setTertiaryColor(getData().theme.tertiaryColor)
 	}
 
 	// GETTERS

@@ -1,9 +1,9 @@
 const displayResume = (data) => {
 	document.title = `${data.firstName} ${data.lastName}`
-	
+
 	const body = document.body
 	body.style.backgroundColor = Theme().getColors().primaryColor
-	
+
 	const background = Background(data)
 	body.appendChild(background)
 
@@ -44,5 +44,16 @@ const displayResume = (data) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	displayResume(data)
+	if (localStorageManager.has('language')) {
+		displayResume(getData())
+	} else {
+		LanguagePicker(
+			languages = { 'English': 'en', 'French': 'fr' },
+			onCancel = () => { displayResume(getData()) },
+			onPick = (language) => {
+				localStorageManager.set('language', language)
+				displayResume(getData())
+			}
+		)
+	}
 })
