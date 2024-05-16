@@ -1,5 +1,4 @@
 const Skill = (data) => {
-	const MIN_WIDTH = 461
 	const starrify = (r) => {
 		const rating = parseFloat(r)
 		const fullStars = Math.floor(rating)
@@ -14,7 +13,7 @@ const Skill = (data) => {
 
 	const element = create('div', null, [], `skill-${data.name}`, {
 		display: 'flex',
-		justifyContent: window.innerWidth <= MIN_WIDTH ? 'flex-start' : 'flex-end',
+		justifyContent: 'flex-start',
 		gap: '5px',
 	})
 
@@ -47,20 +46,6 @@ const Skill = (data) => {
 		fontSize: '.7em',
 	}, [], {
 		textContent: `( ${data.category} )`,
-	})
-
-	const onHorizontalResize = () => {
-		element.style.justifyContent = window.innerWidth <= MIN_WIDTH ? 'flex-start' : 'flex-end'
-	}
-	
-	let previousWidth = window.innerWidth
-	window.addEventListener('resize', () => {
-		const currentWidth = window.innerWidth
-		const widthDifference = currentWidth - previousWidth
-		if (widthDifference !== 0) {
-			onHorizontalResize()
-		}
-		previousWidth = currentWidth
 	})
 
 	return element
