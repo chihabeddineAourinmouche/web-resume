@@ -234,6 +234,18 @@ const dataEN = {
 			level: "4.0"
 		},
 		{
+			id: 29,
+			name: "Vue",
+			category: "Web Framework",
+			level: "4.5"
+		},
+		{
+			id: 30,
+			name: "Pinia",
+			category: "Web Framework",
+			level: "4.0"
+		},
+		{
 			id: 11,
 			name: "ReactJS",
 			category: "Web Framework",
@@ -584,6 +596,18 @@ const dataFR = {
 			id: 10,
 			name: "LUA",
 			category: "Langage de programmation",
+			level: "4.0",
+		},
+		{
+			id: 29,
+			name: "Vue",
+			category: "Framework web",
+			level: "4.5",
+		},
+		{
+			id: 30,
+			name: "Pinia",
+			category: "Framework web",
 			level: "4.0",
 		},
 		{
