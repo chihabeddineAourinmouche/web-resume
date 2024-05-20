@@ -7,7 +7,7 @@ const ResumeContainer = (parent) => {
 		width: '100vw',
 		maxWidth: '700px',
 		minWidth: '350px',
-		padding: '20px',
+		padding: '0px 20px 20px 20px',
 		gap: '20px',
 	})
 }
